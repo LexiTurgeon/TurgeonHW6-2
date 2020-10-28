@@ -57,17 +57,17 @@ void LED::outputState(){
    fs.close();
 }
 
+void LED::blink(int num){
+   int i;
+   for(i = 0; i<num; i++){
+	turnOn();
+	sleep(1);
+	turnOff();
+	sleep(1);
+}
+}
 LED::~LED(){
    cout << "destroying the LED with path: " << path << endl;
 }
 
-void LED::blink(int num){
-   int i;
-   for(i = 0; i < num; i++){
-        writeLED("/brightness", "1");
-        sleep(1);
-        writeLED("/brightness", "0");
-        sleep(1);
-   }
-  removeTrigger();
-}
+

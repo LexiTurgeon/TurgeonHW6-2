@@ -15,21 +15,29 @@ int main(int argc, char* argv[]){
    }
    cout << "Starting the makeLEDs program" << endl;
 
-   string cmd(argv[1]);
-   int LEDnum = atoi(argv[2]);
-	
+   string cmd = argv[1];
+   
    LED leds[4] = { LED(0), LED(1), LED(2), LED(3) };
-   for(int i=0; i<=3; i++){
-      if(cmd=="on")leds[i].turnOn();
-      else if(cmd=="off")leds[i].turnOff();
-      else if(cmd=="flash")leds[i].flash("100"); //default is "50"
-      else if(cmd=="status")leds[i].outputState();
+   int num = stoi(argv[2]);
+   //for(int i=0; i<=3; i++){
+      if(cmd=="on"){
+	leds[num].turnOn();
+      }
+      else if(cmd=="off"){
+	leds[num].turnOff();
+      }
+      else if(cmd=="flash"){
+	leds[num].flash("100"); //default is "50"
+      }
+      else if(cmd=="status"){
+	leds[num].outputState();
+      }
       else if(cmd=="blink"){
-		int numberofBlinks = atoi(argv[3]);
-		leds[LEDnum].blink(numberofBlinks);
+	int numberofBlinks = stoi(argv[3]);
+	leds[num].blink(numberofBlinks);
 	}
       else{ cout << "Invalid command!" << endl; }
-   }
+   //}
    cout << "Finished the makeLEDs program" << endl;
    return 0;
 }
